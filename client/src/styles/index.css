@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* resets */
+* {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+}
+
+body,
+html {
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Custom Scroll Bar */
+html {
+  overflow-x: hidden;
+  scrollbar-width: normal;
+  scrollbar-color: #eb01ea #800190;
+  scroll-behavior: smooth !important;
+}
+
+html::-webkit-scrollbar {
+  width: 1.2vw;
+}
+
+html::-webkit-scrollbar-button {
+  background-color: #fdf5e5;
+}
+
+html::-webkit-scrollbar-track {
+  background-color: #fdf5e5;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: #800190;
+  border-radius: 0.5vw;
+  border: 0.26vw solid #fdf5e5;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: #eb01ea;
+}
