@@ -1,0 +1,39 @@
+.tab-buttons-wrapper {
+  width: 100vw;
+  padding: 20px;
+}
+
+.tab-buttons {
+  width: 280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.cancellation-policy {
+  max-width: 80%;
+  margin: 50px auto;
+  text-align: justify;
+}
+
+.cancellation-policy h2 {
+  padding-bottom: 20px;
+  text-align: center;
+  color: #800190;
+}
+
+.policy-content {
+  color: black;
+  line-height: 1.8;
+}
+
+.policy-content p {
+  margin-bottom: 1.5em;
+}
+
+@media (max-width: 768px) {
+  .cancellation-policy {
+    max-width: 90%;
+  }
+}

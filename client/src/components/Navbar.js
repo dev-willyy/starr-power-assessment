@@ -13,9 +13,10 @@ function Navbar() {
           <span className="logo">Hotelify</span>
         </Link>
         {user ? (
-          user.username
+          user.username && <Link to="/cancellationPolicy">Our Policy</Link>
         ) : (
           <div className="navItems">
+            <Link to="/cancellation-policy">Our Policy</Link>
             <button className="navButton">Create Account</button>
             <button className="navButton">Sign in</button>
           </div>
