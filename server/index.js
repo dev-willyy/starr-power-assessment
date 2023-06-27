@@ -9,7 +9,6 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
 const app = express();
-const PORT = 3002;
 
 dotenv.config();
 
@@ -52,8 +51,9 @@ app.get('/', (req, res) => {
   res.send('api endpoint is deployed live');
 });
 
-app.listen(PORT, (err) => {
+const port = process.env.PORT || 5000;
+app.listen(port, (err) => {
   connectDB();
   if (err) console.error(err);
-  console.log(`Express server is running on port ${PORT}`);
+  console.log(`Express server is running on port ${port}`);
 });

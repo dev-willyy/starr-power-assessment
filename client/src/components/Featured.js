@@ -2,7 +2,9 @@ import useFetch from './../custom-hooks/useFetch';
 import './../styles/featured.css';
 
 function Featured() {
-  const { data, loading, error } = useFetch('/hotels/countByCity?cities=berlin,madrid,london');
+  const { data, loading, error } = useFetch('/hotels/countByCityName?cities=paris,abuja,london');
+
+  console.log(data);
 
   return (
     <div className="featured">
@@ -17,7 +19,7 @@ function Featured() {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1>Berlin</h1>
+              <h1>Paris</h1>
               <h2>{data[0]} properties</h2>
             </div>
           </div>
@@ -29,7 +31,7 @@ function Featured() {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1>Madrid</h1>
+              <h1>Abuja</h1>
               <h2>{data[1]} properties</h2>
             </div>
           </div>
@@ -48,6 +50,6 @@ function Featured() {
       )}
     </div>
   );
-};
+}
 
 export default Featured;

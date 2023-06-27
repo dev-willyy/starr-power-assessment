@@ -18,11 +18,12 @@
 
 .fListItem {
   margin-bottom: 10px;
-  color: #003580;
+  color: #800190;
   cursor: pointer;
 }
 
 .fText {
+  color: #800190;
   text-align: center;
   padding-bottom: 10px;
 }

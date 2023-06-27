@@ -166,7 +166,7 @@ function Header({ type }) {
               </div>
               <div className="headerSearchItem">
                 <button className="headerBtn" onClick={handleSearch}>
-                  Search
+                  filter
                 </button>
               </div>
             </div>
