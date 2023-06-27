@@ -38,9 +38,17 @@ async function getHotel(req, res, next) {
   }
 }
 
+// async function getHotels(req, res, next) {
+//   try {
+//     const hotels = await Hotel.find(req.query).limit(req.query.limit);
+//     res.status(200).json(hotels);
+//   } catch (err) {
+//     next(err);
+//   }
+// }
 async function getHotels(req, res, next) {
   try {
-    const hotels = await Hotel.find();
+    const hotels = await Hotel.find(req.query).limit(parseInt(req.query.limit));
     res.status(200).json(hotels);
   } catch (err) {
     next(err);
@@ -62,4 +70,24 @@ async function countByCity(req, res, next) {
   }
 }
 
-export { createHotel, updateHotel, deleteHotel, getHotel, getHotels, countByCity };
+async function countByType(req, res, next) {
+  try {
+    const hotelCount = await Hotel.countDocuments({ type: 'hotel' });
+    const cabinCount = await Hotel.countDocuments({ type: 'cabin' });
+    const resortCount = await Hotel.countDocuments({ type: 'resort' });
+    const apartmentCount = await Hotel.countDocuments({ type: 'apartment' });
+    // const villaCount = await Hotel.countDocuments({ type: 'villa' });
+
+    res.status(200).json([
+      { type: 'hotels', count: hotelCount },
+      { type: 'cabins', count: cabinCount },
+      { type: 'resorts', count: resortCount },
+      { type: 'apartments', count: apartmentCount },
+      // { type: 'villas', count: villaCount },
+    ]);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { createHotel, updateHotel, deleteHotel, getHotel, getHotels, countByCity, countByType };

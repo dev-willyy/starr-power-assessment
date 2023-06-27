@@ -6,6 +6,7 @@ import usersRoute from './routes/users.js';
 import hotelsRoute from './routes/hotels.js';
 import roomsRoute from './routes/rooms.js';
 import cookieParser from 'cookie-parser';
+import cors from 'cors';
 
 const app = express();
 const PORT = 3002;
@@ -27,7 +28,7 @@ mongoose.connection.on('disconnected', () => {
 
 // middlewares
 app.use(cookieParser());
-
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/auth', authRoute);
@@ -45,6 +46,10 @@ app.use((err, req, res, next) => {
     message: errorMessage,
     stack: err.stack,
   });
+});
+
+app.get('/', (req, res) => {
+  res.send('api endpoint is deployed live');
 });
 
 app.listen(PORT, (err) => {
