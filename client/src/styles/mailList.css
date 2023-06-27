@@ -21,6 +21,7 @@
 
 .mailInputContainer > button {
   height: 50px;
+  padding-inline: 20px;
   background-color: white;
   color: #800190;
   font-weight: 500;

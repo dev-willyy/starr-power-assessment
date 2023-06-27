@@ -1,4 +1,4 @@
-import { faBed, faCalendarDays, faCar, faPerson, faPlane, faTaxi } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faCalendarDays, faCarAlt, faHotel, faLandmark, faPerson, faPlaneDeparture, faTaxi } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../styles/header.css';
 import { DateRange } from 'react-date-range';
@@ -22,7 +22,7 @@ function Header({ type }) {
   ]);
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
-    adult: 1,
+    adult: 2,
     children: 0,
     room: 1,
   });
@@ -51,31 +51,32 @@ function Header({ type }) {
       <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
         <div className="headerList">
           <div className="headerListItem active">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Stays</span>
+            <FontAwesomeIcon icon={faHotel} />
+            <span>Accommodations</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Flights</span>
+            <FontAwesomeIcon icon={faPlaneDeparture} />
+            <span>Airlines</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Car rentals</span>
+            <FontAwesomeIcon icon={faCarAlt} />
+            <span>Vehicle rentals</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Attractions</span>
+            <FontAwesomeIcon icon={faLandmark} />
+            <span>Sightseeing</span>
           </div>
           <div className="headerListItem">
             <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
+            <span>Shuttle services</span>
           </div>
         </div>
         {type !== 'list' && (
           <>
-            <h1 className="headerTitle">A lifetime of discounts? It's Genius.</h1>
+            <h1 className="headerTitle">An endless stream of discounts? It's Genius.</h1>
             <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or more with a free Lamabooking account
+              Be recognized for your journeys – unleash immediate discounts of 10% or higher through a complimentary
+              Hotelify membership.
             </p>
             {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
@@ -83,7 +84,7 @@ function Header({ type }) {
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
                 <input
                   type="text"
-                  placeholder="Where are you going?"
+                  placeholder="Got a location  in mind?"
                   className="headerSearchInput"
                   onChange={(e) => setDestination(e.target.value)}
                 />
@@ -175,6 +176,6 @@ function Header({ type }) {
       </div>
     </div>
   );
-};
+}
 
 export default Header;
