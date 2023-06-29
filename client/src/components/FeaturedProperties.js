@@ -2,7 +2,7 @@ import useFetch from './../custom-hooks/useFetch';
 import '../styles/featuredProperties.css';
 
 function FeaturedProperties() {
-  const { data, loading, error } = useFetch('/hotels?featured=true&limit=4');
+  const { data, loading, error } = useFetch('/hotels?featured=true&limit=3');
   console.log(data);
 
   return (

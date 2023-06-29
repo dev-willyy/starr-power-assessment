@@ -20,13 +20,23 @@
   font-size: 40px;
 }
 
-.navItems > a {
+.signedInNavItem {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 20px;
+  font-size: 14px;
+}
+.signedInNavItem > span {
+  color: #fff;
+}
+
+.policy {
   text-decoration: none;
   color: #f1f1f1;
   font-size: 14px;
   transition: all 0.2s ease-in-out;
 }
-.navItems > a:hover {
+.policy:hover {
   color: #cfb9b9;
 }
 

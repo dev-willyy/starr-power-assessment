@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import Hotel from './pages/Hotel';
 import List from './pages/List';
 import Login from './pages/Login';
-import CancellationPolicy from './components/CancellationPolicy';
+import CancellationPolicy from './pages/CancellationPolicy';
 
 function App() {
   return (

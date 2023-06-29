@@ -2,11 +2,24 @@ import { useState } from 'react';
 import './../styles/cancellationPolicy.css';
 import { policyText } from '../data/cancellationPolicyData';
 
-const CancellationPolicy = () => {
+function CancellationPolicy() {
   const [activeTab, setActiveTab] = useState(0);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
+  };
+
+  const PolicyContent = ({ pageNum, isPrivacyPolicy }) => {
+    return (
+      <>
+        <div className="cancellation-policy">
+          <h2>{pageNum ? `Cancellation Policy ${pageNum}` : 'Privacy Policy'} </h2>
+          <div className="policy-content">
+            <p>{!isPrivacyPolicy ? `${pageNum === '1' ? policyText[0] : policyText[1]}` : policyText[2]}</p>
+          </div>
+        </div>
+      </>
+    );
   };
 
   return (
@@ -25,33 +38,12 @@ const CancellationPolicy = () => {
         </div>
       </div>
       <div className="tab-content">
-        {activeTab === 0 && (
-          <div class="cancellation-policy">
-            <h2>Cancellation Policy 1</h2>
-            <div class="policy-content">
-              <p>{policyText[0]}</p>
-            </div>
-          </div>
-        )}
-        {activeTab === 1 && (
-          <div class="cancellation-policy">
-            <h2>Cancellation Policy 2</h2>
-            <div class="policy-content">
-              <p>{policyText[0]}</p>
-            </div>
-          </div>
-        )}
-        {activeTab === 2 && (
-          <div class="cancellation-policy">
-            <h2>Cancellation Policy 3</h2>
-            <div class="policy-content">
-              <p>{policyText[0]}</p>
-            </div>
-          </div>
-        )}
+        {activeTab === 0 && <PolicyContent pageNum="1" />}
+        {activeTab === 1 && <PolicyContent pageNum="2" />}
+        {activeTab === 2 && <PolicyContent isPrivacyPolicy />}
       </div>
     </div>
   );
-};
+}
 
 export default CancellationPolicy;

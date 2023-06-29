@@ -68,9 +68,9 @@ function Reserve({ setOpen, hotelId }) {
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
               <div className="rTitle">{item.title}</div>
-              <div className="rDesc">{item.desc}</div>
+              <div className="rDesc">{item.description}</div>
               <div className="rMax">
-                Max people: <b>{item.maxPeople}</b>
+                Max people: <b>{item.maxPersons}</b>
               </div>
               <div className="rPrice">{item.price}</div>
             </div>

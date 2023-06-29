@@ -98,7 +98,7 @@ function Hotel() {
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
                 <h1 className="hotelTitle">{data.title}</h1>
-                <p className="hotelDesc">{data.desc}</p>
+                <p className="hotelDesc">{data.description}</p>
               </div>
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>

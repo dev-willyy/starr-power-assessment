@@ -1,6 +1,5 @@
-import { faBed, faCalendarDays, faCarAlt, faHotel, faLandmark, faPerson, faPlaneDeparture, faTaxi } from '@fortawesome/free-solid-svg-icons';
+import { faBed, faCalendarDays, faCarAlt, faCarSide, faHotel, faLandmark, faPerson, faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../styles/header.css';
 import { DateRange } from 'react-date-range';
 import { useContext, useState } from 'react';
 import 'react-date-range/dist/styles.css';
@@ -9,6 +8,7 @@ import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/SearchContext';
 import { AuthContext } from '../context/AuthContext';
+import '../styles/header.css';
 
 function Header({ type }) {
   const [destination, setDestination] = useState('');
@@ -67,7 +67,7 @@ function Header({ type }) {
             <span>Sightseeing</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faTaxi} />
+            <FontAwesomeIcon icon={faCarSide} />
             <span>Shuttle services</span>
           </div>
         </div>

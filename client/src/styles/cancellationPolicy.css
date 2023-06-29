@@ -11,12 +11,28 @@
   gap: 15px;
 }
 
+.tab-buttons > button {
+  padding: 10px 16px;
+  background-color: #800190;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+.tab-buttons > button:hover {
+  scale: 1.03;
+  cursor: pointer;
+}
+.tab-buttons > button.active {
+  background-color: #eb01ea;
+}
+
 .cancellation-policy {
   max-width: 80%;
   margin: 50px auto;
   text-align: justify;
 }
-
 .cancellation-policy h2 {
   padding-bottom: 20px;
   text-align: center;
