@@ -1,8 +1,9 @@
 import useFetch from './../custom-hooks/useFetch';
 import '../styles/featuredProperties.css';
+import baseURL from '../baseURL';
 
 function FeaturedProperties() {
-  const { data, loading, error } = useFetch('/hotels?featured=true&limit=3');
+  const { data, loading, error } = useFetch(`${baseURL}/hotels?featured=true&limit=4`);
   console.log(data);
 
   return (

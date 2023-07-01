@@ -22,20 +22,21 @@
 
 .signedInNavItem {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 0.7fr 1fr auto;
   gap: 20px;
   font-size: 14px;
 }
 .signedInNavItem > span {
   color: #fff;
 }
-
+.logout,
 .policy {
   text-decoration: none;
   color: #f1f1f1;
   font-size: 14px;
   transition: all 0.2s ease-in-out;
 }
+.logout:hover,
 .policy:hover {
   color: #cfb9b9;
 }

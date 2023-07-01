@@ -1,8 +1,9 @@
+import baseURL from '../baseURL';
 import useFetch from './../custom-hooks/useFetch';
 import './../styles/featured.css';
 
 function Featured() {
-  const { data, loading, error } = useFetch('/hotels/countByCityName?cities=paris,abuja,london');
+  const { data, loading, error } = useFetch(`${baseURL}/hotels/countByCityName?cities=paris,abuja,london`);
 
   console.log(data);
 

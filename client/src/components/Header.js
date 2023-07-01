@@ -1,13 +1,22 @@
-import { faBed, faCalendarDays, faCarAlt, faCarSide, faHotel, faLandmark, faPerson, faPlaneDeparture } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { DateRange } from 'react-date-range';
 import { useContext, useState } from 'react';
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
 import { format } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/SearchContext';
 import { AuthContext } from '../context/AuthContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faBed,
+  faCalendarDays,
+  faCarAlt,
+  faCarSide,
+  faHotel,
+  faLandmark,
+  faPerson,
+  faPlaneDeparture,
+} from '@fortawesome/free-solid-svg-icons';
 import '../styles/header.css';
 
 function Header({ type }) {
@@ -78,7 +87,11 @@ function Header({ type }) {
               Be recognized for your journeys – unleash immediate discounts of 10% or higher through a complimentary
               Hotelify membership.
             </p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
+            {!user && (
+              <Link to='/login'>
+                <button className="headerBtn">Sign in / Register</button>
+              </Link>
+            )}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
@@ -86,7 +99,7 @@ function Header({ type }) {
                   type="text"
                   placeholder="Got a location  in mind?"
                   className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
+                  onChange={(e) => setDestination(e.target.value.toLowerCase())}
                 />
               </div>
               <div className="headerSearchItem">

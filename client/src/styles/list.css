@@ -12,7 +12,7 @@
 }
 
 .listSearch {
-  margin-block: 30px 60px;
+  /* margin-block: 30px 60px; */
   flex: 1;
   background-color: #eb01ea;
   padding: 10px;
@@ -44,6 +44,9 @@
   height: 30px;
   border: none;
   padding: 5px;
+}
+.lsItem:first-of-type > input::placeholder {
+  color: #746d6d;
 }
 .lsItem > span {
   height: 30px;

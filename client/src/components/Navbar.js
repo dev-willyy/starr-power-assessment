@@ -6,6 +6,11 @@ import '../styles/navbar.css';
 function Navbar() {
   const { user } = useContext(AuthContext);
 
+  const handleLogout = () => {
+    window.localStorage.removeItem('user');
+    window.location.reload();
+  };
+
   return (
     <div className="navbar">
       <div className="navContainer">
@@ -14,6 +19,9 @@ function Navbar() {
         </Link>
         {user ? (
           <div className="signedInNavItem">
+            <Link onClick={handleLogout} className="logout">
+              Logout
+            </Link>
             <Link to="/cancellation-policy" className="policy">
               Our Policy
             </Link>
@@ -24,7 +32,9 @@ function Navbar() {
             <Link to="/cancellation-policy" className="policy">
               Our Policy
             </Link>
-            <button className="navButton">Create Account</button>
+            <Link to="/register">
+              <button className="navButton">Create Account</button>
+            </Link>
             <Link to="/login">
               <button className="navButton">Sign in</button>
             </Link>

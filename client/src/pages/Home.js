@@ -8,6 +8,8 @@ import PropertyList from '../components/PropertyList';
 import '../styles/home.css';
 
 function Home() {
+  // console.log(process.env);
+
   return (
     <div>
       <Navbar />

@@ -1,9 +1,10 @@
+import baseURL from '../baseURL';
 import useFetch from '../custom-hooks/useFetch';
 import { images } from '../data/propertyListData';
 import '../styles/propertyList.css';
 
 function PropertyList() {
-  const { data, loading, error } = useFetch('/hotels/countByType');
+  const { data, loading, error } = useFetch(`${baseURL}/hotels/countByType`);
 
   return (
     <div className="pList">

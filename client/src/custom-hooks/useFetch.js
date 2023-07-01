@@ -32,6 +32,6 @@ function useFetch(url) {
   };
 
   return { data, loading, error, reFetch };
-};
+}
 
 export default useFetch;

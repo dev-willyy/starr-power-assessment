@@ -1,4 +1,5 @@
 import Hotel from '../models/Hotel.js';
+import Room from '../models/Room.js';
 
 async function createHotel(req, res, next) {
   const newHotel = new Hotel(req.body);
@@ -72,24 +73,36 @@ async function countByCity(req, res, next) {
 }
 
 async function countByType(req, res, next) {
-  // > 3 room types
+  // only 3 room types
   try {
     const hotelCount = await Hotel.countDocuments({ type: 'hotel' });
     const cabinCount = await Hotel.countDocuments({ type: 'cabin' });
     const resortCount = await Hotel.countDocuments({ type: 'resort' });
     const apartmentCount = await Hotel.countDocuments({ type: 'apartment' });
-    const villaCount = await Hotel.countDocuments({ type: 'villa' });
 
     res.status(200).json([
-      { type: 'hotels', count: hotelCount },
-      { type: 'cabins', count: cabinCount },
-      { type: 'resorts', count: resortCount },
-      { type: 'apartments', count: apartmentCount },
-      { type: 'villas', count: villaCount },
+      { type: 'total hotels', count: hotelCount },
+      { type: 'cabin rooms', count: cabinCount },
+      { type: 'resort rooms', count: resortCount },
+      { type: 'apartment rooms', count: apartmentCount },
     ]);
   } catch (err) {
     next(err);
   }
 }
 
-export { createHotel, updateHotel, deleteHotel, getHotel, getHotels, countByCity, countByType };
+async function getHotelRooms(req, res, next) {
+  try {
+    const hotel = await Hotel.findById(req.params.id);
+    const list = await Promise.all(
+      hotel.rooms.map((room) => {
+        return Room.findById(room);
+      })
+    );
+    return res.status(200).json(list);
+  } catch (err) {
+    next(err);
+  }
+}
+
+export { createHotel, updateHotel, deleteHotel, getHotel, getHotels, countByCity, countByType, getHotelRooms };

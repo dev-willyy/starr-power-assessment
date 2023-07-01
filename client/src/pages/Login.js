@@ -34,14 +34,21 @@ function Login() {
     <div className="login">
       <div className="lContainer">
         <input type="text" placeholder="username" id="username" onChange={handleChange} className="lInput" />
-        <input type="password" placeholder="password" id="password" onChange={handleChange} className="lInput" />
+        <input
+          type="password"
+          placeholder="password"
+          id="password"
+          onChange={handleChange}
+          autoComplete="off"
+          className="lInput"
+        />
         <button disabled={loading} onClick={handleClick} className="lButton">
-          Login
+          Sign in
         </button>
         {error && <span>{error.message}</span>}
       </div>
     </div>
   );
-};
+}
 
 export default Login;

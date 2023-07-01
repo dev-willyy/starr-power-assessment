@@ -58,7 +58,7 @@ function Hotel() {
       navigate('/login');
     }
   };
-  
+
   return (
     <div>
       <Navbar />
@@ -78,7 +78,9 @@ function Hotel() {
             </div>
           )}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button className="bookNow" onClick={handleClick}>
+              Reserve or Book Now!
+            </button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
@@ -117,6 +119,6 @@ function Hotel() {
       {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
     </div>
   );
-};
+}
 
 export default Hotel;

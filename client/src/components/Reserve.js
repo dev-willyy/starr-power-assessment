@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-
-import '../styles/reserve.css';
 import useFetch from '../custom-hooks/useFetch';
 import { useContext, useState } from 'react';
 import { SearchContext } from '../context/SearchContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import '../styles/reserve.css';
 
 function Reserve({ setOpen, hotelId }) {
   const [selectedRooms, setSelectedRooms] = useState([]);
@@ -59,6 +58,7 @@ function Reserve({ setOpen, hotelId }) {
       navigate('/');
     } catch (err) {}
   };
+  
   return (
     <div className="reserve">
       <div className="rContainer">

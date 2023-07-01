@@ -7,7 +7,32 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 async function registerUser(req, res, next) {
+  const { username, email, phoneNumber } = req.body;
   try {
+    console.log(typeof phoneNumber);
+
+    const existingUser = await User.findOne({
+      $or: [{ username }, { email }, { phoneNumber }],
+    });
+
+    if (existingUser) {
+      const errors = {};
+
+      if (existingUser.username === username) {
+        errors.username = 'User with the same username already exists';
+      }
+      if (existingUser.email === email) {
+        errors.email = 'User with the same email already exists';
+      }
+      if (Number(existingUser.phoneNumber) === Number(phoneNumber)) {
+        errors.phoneNumber = 'User with the same phone number already exists';
+      }
+
+      console.log(errors);
+
+      return next(createError(409, errors));
+    }
+
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(req.body.password, salt);
 
