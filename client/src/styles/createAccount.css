@@ -47,3 +47,11 @@
   background-color: #8001908c;
   cursor: not-allowed;
 }
+
+.rError {
+  display: inline-block;
+  color: #252323;
+  font-weight: bold;
+  opacity: 0.8;
+  padding: 5px 10px;
+}

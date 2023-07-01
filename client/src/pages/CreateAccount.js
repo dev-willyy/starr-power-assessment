@@ -31,7 +31,9 @@ function CreateAccount() {
       alert(`${response.data} successfully!, Now login`);
       navigate('/login');
     } catch (err) {
-      console.error(err.response);
+      console.error(err.response.data.message);
+      setError(err.response.data.message);
+      console.log(typeof error);
     }
   };
 
@@ -78,7 +80,7 @@ function CreateAccount() {
         <button onClick={handleSubmit} className="rButton">
           Create Account
         </button>
-        {/* {error && <span>{response.data}</span>} */}
+        {error && <span className="rError">{typeof error === 'object' ? JSON.stringify(error) : error}</span>}
       </div>
     </div>
   );
