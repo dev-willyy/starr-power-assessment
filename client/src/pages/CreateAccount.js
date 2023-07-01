@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../styles/createAccount.css';
+import baseURL from '../baseURL';
 
 function CreateAccount() {
   const [username, setUsername] = useState('');
@@ -20,7 +21,7 @@ function CreateAccount() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/register', {
+      const response = await axios.post(`${baseURL}/auth/register`, {
         username,
         email,
         password,
