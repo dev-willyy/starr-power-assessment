@@ -3,7 +3,7 @@ import useFetch from './../custom-hooks/useFetch';
 import './../styles/featured.css';
 
 function Featured() {
-  const { data, loading, error } = useFetch(`${baseURL}/hotels/countByCityName?cities=paris,abuja,london`);
+  const { data, loading, error } = useFetch(`${baseURL}/hotels/countByCityName?cities=paris,abuja,london,lagos`);
 
   console.log(data);
 
@@ -45,6 +45,17 @@ function Featured() {
             <div className="featuredTitles">
               <h1>London</h1>
               <h2>{data[2]} properties</h2>
+            </div>
+          </div>
+          <div className="featuredItem">
+            <img
+              src="https://cf.bstatic.com/static/img/theme-index/carousel_320x240/card-image-chalet_300/8ee014fcc493cb3334e25893a1dee8c6d36ed0ba.jpg"
+              alt=""
+              className="featuredImg"
+            />
+            <div className="featuredTitles">
+              <h1>Lagos</h1>
+              <h2>{data[3]} properties</h2>
             </div>
           </div>
         </>
