@@ -11,6 +11,7 @@ import { SearchContext } from '../context/SearchContext';
 import { AuthContext } from '../context/AuthContext';
 import Reserve from '../components/Reserve';
 import '../styles/hotel.css';
+import baseURL from '../baseURL';
 
 function Hotel() {
   const location = useLocation();
@@ -19,7 +20,7 @@ function Hotel() {
   const [open, setOpen] = useState(false);
   const [openModal, setOpenModal] = useState(false);
 
-  const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  const { data, loading, error } = useFetch(`${baseURL}/hotels/find/${id}`);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
