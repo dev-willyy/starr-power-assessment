@@ -13,8 +13,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/hotels" element={<List />} />
         <Route path="/hotels/:id" element={<Hotel />} />
-        <Route path="/register" element={<CreateAccount />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<CreateAccount />} />
         <Route path="/cancellation-policy" element={<CancellationPolicy />} />
       </Routes>
     </Router>
