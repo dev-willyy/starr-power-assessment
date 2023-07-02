@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="footer">
       <div className="fLists">
         {footerListData.map((footerData) => (
-          <ul className="fList" key={1}>
+          <ul className="fList" key={footerData.id}>
             <li className="fListItem">{footerData.liOne}</li>
             <li className="fListItem">{footerData.liTwo}</li>
             <li className="fListItem">{footerData.liThree}</li>

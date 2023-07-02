@@ -7,16 +7,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/SearchContext';
 import { AuthContext } from '../context/AuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faBed,
-  faCalendarDays,
-  faCarAlt,
-  faCarSide,
-  faHotel,
-  faLandmark,
-  faPerson,
-  faPlaneDeparture,
-} from '@fortawesome/free-solid-svg-icons';
+import { faBed, faCalendarDays, faPerson } from '@fortawesome/free-solid-svg-icons';
+import { headerData } from '../data/headerData';
 import '../styles/header.css';
 
 function Header({ type }) {
@@ -59,26 +51,12 @@ function Header({ type }) {
     <div className="header">
       <div className={type === 'list' ? 'headerContainer listMode' : 'headerContainer'}>
         <div className="headerList">
-          <div className="headerListItem active">
-            <FontAwesomeIcon icon={faHotel} />
-            <span>Accommodations</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faPlaneDeparture} />
-            <span>Airlines</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faCarAlt} />
-            <span>Vehicle rentals</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faLandmark} />
-            <span>Sightseeing</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faCarSide} />
-            <span>Shuttle services</span>
-          </div>
+          {headerData.map((hData) => (
+            <div className={hData.id === 1 ? 'headerListItem active' : 'headerListItem'} key={hData.id}>
+              <FontAwesomeIcon icon={hData.icon} />
+              <span>{hData.spanText}</span>
+            </div>
+          ))}
         </div>
         {type !== 'list' && (
           <>
@@ -88,7 +66,7 @@ function Header({ type }) {
               Hotelify membership.
             </p>
             {!user && (
-              <Link to='/login'>
+              <Link to="/login">
                 <button className="headerBtn">Sign in / Register</button>
               </Link>
             )}

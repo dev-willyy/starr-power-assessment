@@ -9,8 +9,6 @@ dotenv.config();
 async function registerUser(req, res, next) {
   const { username, email, phoneNumber } = req.body;
   try {
-    console.log(typeof phoneNumber);
-
     const existingUser = await User.findOne({
       $or: [{ username }, { email }, { phoneNumber }],
     });
@@ -27,8 +25,6 @@ async function registerUser(req, res, next) {
       if (Number(existingUser.phoneNumber) === Number(phoneNumber)) {
         errors.phoneNumber = 'User with the same phone number already exists';
       }
-
-      console.log(errors);
 
       return next(createError(409, errors));
     }

@@ -25,7 +25,7 @@ function CreateAccount() {
         username,
         email,
         password,
-        phoneNumber: phonenumber,
+        phoneNumber: parseInt(phonenumber),
         isAdmin,
       });
       alert(`${response.data} successfully!, Now login`);

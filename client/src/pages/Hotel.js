@@ -10,8 +10,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../context/SearchContext';
 import { AuthContext } from '../context/AuthContext';
 import Reserve from '../components/Reserve';
-import '../styles/hotel.css';
 import baseURL from '../baseURL';
+import '../styles/hotel.css';
 
 function Hotel() {
   const location = useLocation();
