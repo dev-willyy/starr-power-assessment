@@ -25,6 +25,7 @@ function Hotel() {
   const navigate = useNavigate();
 
   const { dates, options } = useContext(SearchContext);
+  console.log(options);
 
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
@@ -33,11 +34,11 @@ function Hotel() {
     return diffDays;
   }
 
-  const days = dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dates && dates.length > 0 ? dayDifference(dates[0].endDate, dates[0].startDate) : 0;
 
   const handleOpen = (i) => {
     setSlideNumber(i);
-    setOpen(true);
+    setOpen(false);
   };
 
   const handleMove = (direction) => {
@@ -107,7 +108,13 @@ function Hotel() {
                 <h1>Perfect for a {days}-night stay!</h1>
                 <span>Located in the real heart of Krakow, this property has an excellent location score of 9.8!</span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
+                  <b>
+                    $
+                    {!isNaN(parseInt(days * data.cheapestPrice * options.room))
+                      ? days * data.cheapestPrice * options.room
+                      : 0}
+                  </b>{' '}
+                  {days} nights
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>

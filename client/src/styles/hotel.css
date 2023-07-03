@@ -50,17 +50,21 @@
 }
 
 .hotelImages {
+  margin-block: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .hotelImgWrapper {
-  width: 33%;
+  width: 100%;
+  height: 400px;
 }
 
 .hotelImg {
   width: 100%;
+  height: 100%;
+  border-radius: 8px;
   object-fit: cover;
   cursor: pointer;
 }

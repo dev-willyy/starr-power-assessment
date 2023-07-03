@@ -6,12 +6,11 @@ import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import SearchItem from '../components/SearchItem';
 import useFetch from '../custom-hooks/useFetch';
-import '../styles/list.css';
 import baseURL from '../baseURL';
+import '../styles/list.css';
 
 function List() {
   const location = useLocation();
-  const [inputval, setInputVal] = useState('');
   const [destination, setDestination] = useState(location.state.destination);
   const [dates, setDates] = useState(location.state.dates);
   const [openDate, setOpenDate] = useState(false);
@@ -19,7 +18,17 @@ function List() {
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
 
-  const { data, loading, error, reFetch } = useFetch(`${baseURL}/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`);
+  const { data, loading, error, reFetch } = useFetch(
+    `${baseURL}/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
+  );
+
+  const handleOptionsChange = (e) => {
+    const { name, value } = e.target;
+    setOptions((prevOptions) => ({
+      ...prevOptions,
+      [name]: value,
+    }));
+  };
 
   const handleClick = () => {
     reFetch();
@@ -35,13 +44,7 @@ function List() {
             <h1 className="lsTitle">Filter</h1>
             <div className="lsItem">
               <label>Destination</label>
-              <input
-                placeholder={destination}
-                type="text"
-                onChange={(e) => setInputVal(e.target.value)}
-                value={inputval}
-                readOnly
-              />
+              <input placeholder={destination} type="text" onChange={(e) => setDestination(e.target.value)} />
             </div>
             <div className="lsItem">
               <label>Check-in Date</label>
@@ -60,25 +63,58 @@ function List() {
                   <span className="lsOptionText">
                     Min price <small>per night</small>
                   </span>
-                  <input type="number" onChange={(e) => setMin(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    min={0}
+                    onChange={(e) => setMin(e.target.value)}
+                    className="lsOptionInput"
+                    value={min}
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max price <small>per night</small>
                   </span>
-                  <input type="number" onChange={(e) => setMax(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    min={0}
+                    onChange={(e) => setMax(e.target.value)}
+                    className="lsOptionInput"
+                    value={max}
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Adult</span>
-                  <input type="number" min={1} className="lsOptionInput" placeholder={options.adult} />
+                  <input
+                    type="number"
+                    min={1}
+                    onChange={handleOptionsChange}
+                    name="adult"
+                    value={options.adult}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Children</span>
-                  <input type="number" min={0} className="lsOptionInput" placeholder={options.children} />
+                  <input
+                    type="number"
+                    min={0}
+                    onChange={handleOptionsChange}
+                    name="children"
+                    value={options.children}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Room</span>
-                  <input type="number" min={1} className="lsOptionInput" placeholder={options.room} />
+                  <input
+                    type="number"
+                    min={1}
+                    onChange={handleOptionsChange}
+                    name="room"
+                    value={options.room}
+                    className="lsOptionInput"
+                  />
                 </div>
               </div>
             </div>

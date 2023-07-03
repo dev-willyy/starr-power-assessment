@@ -18,7 +18,7 @@ function Featured() {
               <img src={featuredData[index].imgSrc} alt="" className="featuredImg" />
               <div className="featuredTitles">
                 <h1>{featuredData[index].h1Text}</h1>
-                <h2>{propertyNum} properties</h2>
+                <h2>{propertyNum} {propertyNum === 1 ? 'property' : 'properties'} </h2>
               </div>
             </div>
           ))}

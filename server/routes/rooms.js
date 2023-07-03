@@ -1,6 +1,13 @@
 import express from 'express';
 import { verifyIsAdmin } from '../utilities/verifyToken.js';
-import { createRoom, deleteRoom, getRoom, getRooms, updateRoom, updateRoomAvailability } from '../controllers/roomController.js';
+import {
+  createRoom,
+  deleteRoom,
+  getRoom,
+  getRooms,
+  updateRoom,
+  updateRoomAvailability,
+} from '../controllers/roomController.js';
 
 const router = express.Router();
 
